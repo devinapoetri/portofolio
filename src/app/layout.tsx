@@ -14,15 +14,15 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "Devina Budianti Poetri | Portfolio",
-  description: "Personal portfolio of Devina Budianti Poetri, an Applied Information Systems student passionate about Data Analysis and UI/UX.",
+  description: "Personal portfolio of Devina Budianti Poetri, an Applied Information Systems (Smart City) student Passionate about data research, machine learning, AI, and building smart city technologies.",
   openGraph: {
     title: "Devina Budianti Poetri | Portfolio",
-    description: "Personal portfolio of Devina Budianti Poetri, an Applied Information Systems student passionate about Data Analysis and UI/UX.",
-    url: "https://portfolio.example.com",
-    siteName: "Developer Portfolio",
+    description: "Personal portfolio of Devina Budianti Poetri, an Applied Information Systems (Smart City) student Passionate about data research, machine learning, AI, and building smart city technologies.",
+    url: "https://devinapoetri.vercel.app",
+    siteName: "Devina Budianti Poetri",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200",
+        url: "/favicon.iCO",
         width: 1200,
         height: 630,
         alt: "Developer Portfolio Banner",
