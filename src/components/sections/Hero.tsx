@@ -62,10 +62,10 @@ export function Hero() {
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 mb-12">
-              <Button size="lg" className="gap-2 group">
-                <a href="./#projects">View Work</a>
+              <a href="./#projects"><Button size="lg" className="gap-2 group">
+                View Work
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              </Button></a>
             </motion.div>
           </motion.div>
 
@@ -80,7 +80,7 @@ export function Hero() {
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/40 via-primary/10 to-transparent blur-2xl scale-110" />
             <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl shadow-primary/20">
               <Image
-                src="/profile.jpeg"
+                src="/profilee.jpeg"
                 alt="Devina Budianti Poetri"
                 fill
                 className="object-cover object-top"

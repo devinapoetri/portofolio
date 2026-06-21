@@ -39,10 +39,10 @@ export function Experience() {
       <Container>
         <div className="mb-16 max-w-2xl">
           <h2 className="font-display text-3xl font-bold tracking-tight mb-4">
-            Experience &amp; <span className="text-primary">Achievements</span>
+            Experience
           </h2>
           <p className="text-muted text-lg">
-            A timeline of my professional journey, academic roles, and notable accomplishments.
+            A timeline of my professional journey, academic roles, and key accomplishments.
           </p>
         </div>
 
