@@ -96,7 +96,7 @@ export function ProjectDetailClient({ id }: ProjectDetailClientProps) {
           <div className="bg-surface rounded-2xl border border-border p-6">
             <h3 className="font-semibold text-base text-foreground mb-4 flex items-center gap-2">
               <Tag className="h-4 w-4 text-primary" />
-              Tech Stack
+              Tags
             </h3>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (

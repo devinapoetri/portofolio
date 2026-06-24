@@ -153,7 +153,7 @@ export const projects: Project[] = [
 
     images: [
       "/project/stock (1).png",
-      "/project/stock-clustering-2.png"
+      "/project/stock (2).png"
     ],
 
     tags: [

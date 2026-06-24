@@ -5,7 +5,7 @@ export const skills = [
   },
   {
     category: "Software & Tools",
-    items: ["Visual Studio Code", "Tableau", "MySQL", "Postman", "Google Colab", "Orange Data Mining", "Astah UML"],
+    items: ["Microsoft Office", "Google Workspace", "Visual Studio Code", "Tableau", "MySQL", "Postman", "Google Colab", "Orange Data Mining", "Astah UML"],
   },
   {
     category: "Soft Skills",
