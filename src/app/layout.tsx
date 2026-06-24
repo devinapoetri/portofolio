@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "Devina Budianti Poetri",
     images: [
       {
-        url: "/favicon.iCO",
+        url: "/favicon.ico",
         width: 1200,
         height: 630,
         alt: "Developer Portfolio Banner",

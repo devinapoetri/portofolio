@@ -6,6 +6,7 @@ import { ArrowLeft, ExternalLink, ImageIcon, Tag } from "lucide-react"
 import { GithubIcon } from "@/components/ui/Icons"
 import { projects } from "@/data/projects"
 import { Project } from "@/types"
+import { ModelMetricsBlock } from "@/components/sections/ModelMetrics"
 interface ProjectGalleryProps {
   project: Project
 }
@@ -83,7 +84,7 @@ export function ProjectDetailClient({ id }: ProjectDetailClientProps) {
       {/* Content Layout */}
       <div className="grid gap-8 lg:grid-cols-3">
         {/* Left: Main content */}
-        <div className="lg:col-span-2 space-y-8">
+        <div className="lg:col-span-4 space-y-8">
           <div>
             <span className="inline-block px-3 py-1 rounded-lg text-sm font-semibold bg-primary/15 text-primary border border-primary/30 mb-4">
               {project.category}
@@ -92,16 +93,6 @@ export function ProjectDetailClient({ id }: ProjectDetailClientProps) {
               {project.title}
             </h1>
           </div>
-          <div className="bg-surface rounded-2xl border border-border p-8">
-            <h2 className="font-semibold text-lg text-foreground mb-4">About This Project</h2>
-            <p className="text-muted text-base leading-relaxed">
-              {project.longDescription ?? project.description}
-            </p>
-          </div>
-        </div>
-        {/* Right: Sidebar */}
-        <div className="space-y-6">
-          {/* Tech Stack */}
           <div className="bg-surface rounded-2xl border border-border p-6">
             <h3 className="font-semibold text-base text-foreground mb-4 flex items-center gap-2">
               <Tag className="h-4 w-4 text-primary" />
@@ -118,6 +109,96 @@ export function ProjectDetailClient({ id }: ProjectDetailClientProps) {
               ))}
             </div>
           </div>
+          <div className="bg-surface rounded-2xl border border-border p-8">
+            <h2 className="font-semibold text-lg text-foreground mb-4">About This Project</h2>
+            <p className="text-muted text-base leading-relaxed">
+              {project.longDescription ?? project.description}
+            </p>
+          </div>
+          {project.datasetOverview && (
+            <div className="bg-surface rounded-2xl border border-border p-8">
+              <h2 className="font-semibold text-lg mb-6">
+                Dataset Overview
+              </h2>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="rounded-xl border border-border bg-background/50 p-5 hover:border-primary/40 transition-colors">
+                  <p className="text-xs uppercase tracking-wide text-muted mb-2">
+                    Source
+                  </p>
+                  <p className="font-semibold">
+                    {project.datasetOverview.source}
+                  </p>
+                </div>
+
+                <div className="rounded-xl border border-border bg-background/50 p-5 hover:border-primary/40 transition-colors">
+                  <p className="text-xs uppercase tracking-wide text-muted mb-2">
+                    Rows
+                  </p>
+                  <p className="font-semibold">
+                    {project.datasetOverview.rows}
+                  </p>
+                </div>
+
+                <div className="rounded-xl border border-border bg-background/50 p-5 hover:border-primary/40 transition-colors">
+                  <p className="text-xs uppercase tracking-wide text-muted mb-2">
+                    Columns
+                  </p>
+                  <p className="font-semibold">
+                    {project.datasetOverview.features}
+                  </p>
+                </div>
+              </div>
+
+              {project.datasetOverview.target && (
+                <div className="mt-5 rounded-xl border border-border bg-background/50 p-5 hover:border-primary/40 transition-colors">
+                  <p className="text-xs uppercase tracking-wide text-muted mb-2">
+                    Target
+                  </p>
+                  <p className="font-semibold">
+                    {project.datasetOverview.target}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+          {project.workflow && (
+            <div className="bg-surface rounded-2xl border border-border p-8">
+              <h2 className="font-semibold text-lg mb-6">
+                Project Workflow
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {project.workflow.map((step, index) => (
+                  <div
+                    key={index}
+                    className="rounded-xl border border-border bg-background/50 p-5 hover:border-primary/40 transition-colors"
+                  >
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 text-primary font-semibold text-sm">
+                        {index + 1}
+                      </div>
+
+                      <h3 className="font-semibold text-foreground">
+                        {step.title}
+                      </h3>
+                    </div>
+
+                    <p className="text-sm text-muted leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {project.modelMetrics && (
+            <ModelMetricsBlock metrics={project.modelMetrics} />
+          )}
+        </div>
+        {/* Right: Sidebar */}
+        <div className="space-y-6">
+          {/* Tech Stack */}
           {/* Links */}
           {(project.githubUrl || project.demoUrl) && (
             <div className="bg-surface rounded-2xl border border-border p-6">

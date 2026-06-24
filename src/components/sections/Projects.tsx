@@ -1,7 +1,7 @@
 "use client"
 import * as React from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, ChevronDown } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { Section } from "@/components/ui/Section"
@@ -9,14 +9,24 @@ import { Container } from "@/components/ui/Container"
 import { Badge } from "@/components/ui/Badge"
 import { projects } from "@/data/projects"
 
-const categories = ["All", "Data Analysis", "Web Development"]
+const categories = ["All", "Data", "Web Development"]
+const ITEMS_PER_PAGE = 4
 
 export function Projects() {
   const [activeCategory, setActiveCategory] = React.useState("All")
+  const [visibleCount, setVisibleCount] = React.useState(ITEMS_PER_PAGE)
 
   const filteredProjects = projects.filter(
     (project) => activeCategory === "All" || project.category === activeCategory
   )
+
+  const visibleProjects = filteredProjects.slice(0, visibleCount)
+  const hasMore = visibleCount < filteredProjects.length
+
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category)
+    setVisibleCount(ITEMS_PER_PAGE) // reset pagination tiap ganti kategori
+  }
 
   return (
     <Section id="projects" className="bg-background">
@@ -36,7 +46,7 @@ export function Projects() {
             {categories.map((category) => (
               <button
                 key={category}
-                onClick={() => setActiveCategory(category)}
+                onClick={() => handleCategoryChange(category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeCategory === category
                   ? "bg-primary text-white"
                   : "bg-surface text-muted hover:text-foreground hover:bg-surface/80"
@@ -50,7 +60,7 @@ export function Projects() {
 
         <motion.div layout className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
+            {visibleProjects.map((project) => (
               <motion.div
                 key={project.id}
                 layout
@@ -104,6 +114,19 @@ export function Projects() {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* View More Button */}
+        {hasMore && (
+          <div className="mt-10 flex justify-center">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + ITEMS_PER_PAGE)}
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium border border-border bg-surface text-foreground hover:border-primary/50 hover:text-primary transition-all duration-300"
+            >
+              View More
+              <ChevronDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
+            </button>
+          </div>
+        )}
       </Container>
     </Section>
   )

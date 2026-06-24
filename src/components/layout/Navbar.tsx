@@ -4,12 +4,12 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion"
 import { Container } from "@/components/ui/Container"
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Achievements", href: "#certificates" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home",         href: "/#home" },
+  { name: "About",        href: "/#about" },
+  { name: "Projects",     href: "/#projects" },
+  { name: "Experience",   href: "/#experience" },
+  { name: "Achievements", href: "/#certificates" },
+  { name: "Contact",      href: "/#contact" },
 ]
 
 export function Navbar() {
@@ -19,7 +19,7 @@ export function Navbar() {
   const [activeSection, setActiveSection] = React.useState("home")
   React.useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map((item) => item.href.substring(1))
+      const sections = navItems.map((item) => item.href.substring(2)) // strip leading /#
       let current = "home"
       for (const section of sections) {
         const element = document.getElementById(section)
@@ -61,18 +61,18 @@ export function Navbar() {
     >
       <Container>
         <div className="flex h-16 items-center justify-between">
-          <a href="#home" className="font-display font-bold text-xl tracking-tight">
+          <a href="/#home" className="font-display font-bold text-xl tracking-tight">
             Devina<span className="text-primary">.</span>
           </a>
 
           <nav className="hidden md:flex items-center gap-6">
             {navItems.map((item) => {
-              const isActive = activeSection === item.href.substring(1);
+              const isActive = activeSection === item.href.substring(2); // strip /#
               return (
                 <a
                   key={item.name}
                   href={item.href}
-                  onClick={() => setActiveSection(item.href.substring(1))}
+                  onClick={() => setActiveSection(item.href.substring(2))}
                   className={`text-sm font-medium transition-colors ${isActive ? "text-primary" : "text-muted hover:text-primary"
                     }`}
                 >

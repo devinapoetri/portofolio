@@ -1,3 +1,22 @@
+export interface ClassMetrics {
+  precision: number;
+  recall: number;
+  f1: number;
+}
+
+export interface ModelSnapshot {
+  accuracy: number;
+  class0: ClassMetrics;
+  class1: ClassMetrics;
+  macroAvg: ClassMetrics;
+  weightedAvg: ClassMetrics;
+}
+
+export interface ModelMetrics {
+  beforeHPO: ModelSnapshot;
+  afterHPO: ModelSnapshot;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -9,6 +28,14 @@ export interface Project {
   tags: string[];
   githubUrl?: string;
   demoUrl?: string;
+  workflow?: { title: string; description: string }[];
+  datasetOverview?: {
+    source: string;
+    rows: string;
+    features: string;
+    target?: string;
+  };
+  modelMetrics?: ModelMetrics;
 }
 
 export interface ExperienceItem {

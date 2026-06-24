@@ -35,7 +35,9 @@ export const experiences: ExperienceItem[] = [
     description: "Participate in study group activities focused on data analysis, artificial intelligence, and machine learning.",
     longDescription: "Engage in collaborative discussions and knowledge-sharing sessions related to data science, AI, and machine learning. Explore basic implementation of data processing and machine learning techniques through organizational learning activities.",
     type: "organization",
-    images: []
+    images: [
+      "/experiences/cci.JPG",
+    ]
   },
   {
     id: "4",
